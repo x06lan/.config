@@ -28,6 +28,16 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 
+"neovim plugin
+
+Plugin 'dracula/vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'preservim/nerdcommenter'
+Plugin 'mhinz/vim-startify'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
 filetype plugin indent on
 syntax enable
 set number
@@ -55,5 +65,5 @@ colorscheme vim-monokai-tasty
 " Optional themes for airline/lightline
 let g:lightline = { 'colorscheme': 'monokai_tasty' }  " lightline theme
 let python_highlight_all=1
-
-hi Normal guibg=NONE ctermbg=NONE     "background transparent
+"background transparent
+hi Normal guibg=NONE ctermbg=NONE
