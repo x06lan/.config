@@ -1,0 +1,25 @@
+include /etc/sway/config.d/*
+include ~/.config/sway/default
+include ~/.config/sway/definitions
+include ~/.config/sway/colors
+include ~/.config/sway/modes/*
+include ~/.config/sway/inputs/*
+include ~/.config/sway/waybar/config
+
+#set $mod Mod4
+
+#need to install swaybg
+output * bg ~/Pictures/max.jpg fill
+# App shortcuts
+bindsym $mod+i exec /usr/bin/firefox
+bindsym $mod+o exec /usr/bin/pcmanfm
+bindsym $mod+Return exec $term 
+# Kill window
+bindsym $mod+q kill
+
+default_border pixel 3
+
+
+
+#set $current_bright 50
+#bindsym $mod+Return exec "brightnessctl s "$current_bright
