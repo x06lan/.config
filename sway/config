@@ -4,7 +4,7 @@ include ~/.config/sway/definitions
 include ~/.config/sway/colors
 include ~/.config/sway/modes/*
 include ~/.config/sway/inputs/*
-include ~/.config/sway/waybar/config
+include ~/.config/waybar/config.d
 
 #set $mod Mod4
 
@@ -14,14 +14,34 @@ output * bg ~/Pictures/max.jpg fill
 bindsym $mod+i exec /usr/bin/firefox
 bindsym $mod+o exec /usr/bin/pcmanfm
 bindsym $mod+Return exec $term 
+# brightnessctl
+bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
+
+# volume
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym Mod1+Prior              exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym Mod1+Next               exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+
+bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 # Kill window
 bindsym $mod+q kill
 
+default_floating_border normal
+hide_edge_borders smart
 default_border pixel 3
-#exec_always waybar 
+smart_gaps on
+gaps inner 3
 
 
 
 
 #set $current_bright 50
 #bindsym $mod+Return exec "brightnessctl s "$current_bright
+set $screenshot grim ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $screenclip slurp | grim -g - ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+bindsym Print exec $screenshot
+bindsym Shift+Print exec $screenclip
+

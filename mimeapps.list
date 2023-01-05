@@ -1,0 +1,6 @@
+[Default Applications]
+x-scheme-handler/msteams=teams.desktop
+image/png=firefox.desktop
+
+[Added Associations]
+image/png=firefox.desktop;
