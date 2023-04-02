@@ -116,7 +116,7 @@ window#waybar.chromium {
 }
 */
 #battery.charging, #battery.plugged {
-    background-color: #adda78;
+    background-color: #16a085;
 }
 
 @keyframes blink {

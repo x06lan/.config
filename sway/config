@@ -6,14 +6,20 @@ include ~/.config/sway/modes/*
 include ~/.config/sway/inputs/*
 include ~/.config/waybar/config.d
 
-#set $mod Mod4
-
 #need to install swaybg
 output * bg ~/Pictures/max.jpg fill
+set $screenshot grim ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $screenclip slurp | grim -g - ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png | wl-copy
+
+# Kill window
+bindsym $mod+q kill
 # App shortcuts
 bindsym $mod+i exec /usr/bin/firefox
+#bindsym $mod+o exec /usr/bin/thunar
 bindsym $mod+o exec /usr/bin/pcmanfm
-bindsym $mod+Return exec $term 
+#bindsym $mod+Return exec $term 
+#bindsym Print exec $screenshot
+bindsym Print exec $screenclip
 # brightnessctl
 bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
@@ -26,22 +32,11 @@ bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5% #d
 bindsym Mod1+Next               exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 
 bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
-# Kill window
-bindsym $mod+q kill
 
 default_floating_border normal
 hide_edge_borders smart
 default_border pixel 3
 smart_gaps on
 gaps inner 3
-
-
-
-
-#set $current_bright 50
-#bindsym $mod+Return exec "brightnessctl s "$current_bright
-set $screenshot grim ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-set $screenclip slurp | grim -g - ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-bindsym Print exec $screenshot
-bindsym Shift+Print exec $screenclip
+exec "sudo ~/code/RyzenAdj/build/ryzenadj --stapm-limit=15000 --fast-limit=25000 --slow-limit=15000 --tctl-temp=100"
 
