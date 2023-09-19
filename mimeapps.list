@@ -1,6 +1,11 @@
 [Default Applications]
 x-scheme-handler/msteams=teams.desktop
 image/png=firefox.desktop
+application/vnd.oasis.opendocument.spreadsheet=firefox.desktop
 
 [Added Associations]
 image/png=firefox.desktop;
+text/csv=sublime_text.desktop;
+text/plain=sublime_text.desktop;
+text/x-csrc=sublime_text.desktop;
+application/vnd.oasis.opendocument.spreadsheet=firefox.desktop;
