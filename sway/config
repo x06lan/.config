@@ -20,6 +20,8 @@ bindsym $mod+o exec /usr/bin/pcmanfm
 #bindsym $mod+Return exec $term 
 #bindsym Print exec $screenshot
 bindsym Print exec $screenclip
+
+bindsym $mod+Shift+s exec 'swaylock -f -c 000000' 
 # brightnessctl
 bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
@@ -40,3 +42,8 @@ smart_gaps on
 gaps inner 3
 exec "sudo ~/code/RyzenAdj/build/ryzenadj --stapm-limit=15000 --fast-limit=25000 --slow-limit=15000 --tctl-temp=100"
 
+exec swayidle -w \
+		timeout 3000 'swaylock -f -c 000000' \
+		timeout 3000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+		timeout 3000 'systemctl suspend' \
+		before-sleep 'swaylock -f -c 000000'
