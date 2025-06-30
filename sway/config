@@ -10,13 +10,16 @@ include ~/.config/waybar/config.d
 output * bg ~/Pictures/max.jpg fill
 set $screenshot grim ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Pictures/screenshot/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png | wl-copy
+#set $screenclip   grim -g "$(slurp)" -t png - | wl-copy -t image/png
+#set $screenclip exec grimshot --notify save area | wl-copy -t image/png
+
 
 # Kill window
 bindsym $mod+q kill
 # App shortcuts
 bindsym $mod+i exec /usr/bin/firefox
 #bindsym $mod+o exec /usr/bin/thunar
-bindsym $mod+o exec /usr/bin/pcmanfm
+bindsym $mod+o exec /usr/bin/nemo
 #bindsym $mod+Return exec $term 
 #bindsym Print exec $screenshot
 bindsym Print exec $screenclip
@@ -46,4 +49,5 @@ exec swayidle -w \
 		timeout 3000 'swaylock -f -c 000000' \
 		timeout 3000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 		timeout 3000 'systemctl suspend' \
+		timeout 3000 pactl set-sink-volume  @DEFAULT_SINK@ 0% \
 		before-sleep 'swaylock -f -c 000000'
